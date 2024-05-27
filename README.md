@@ -11,3 +11,4 @@ Bạn có thể tìm hiểu đề bài tại [đây](https://github.com/Alessand
 ## Thông tin thêm
 - Yêu cầu cài đặt neo4j desktop
 - Kéo thả file script.zip vào Neo4j Browser để có thể dùng ngay lệnh cypher
+- Về phần import dữ liệu từ file csv, hãy đưa các dứ liệu đó đến thư mục import trong neo4j_data(chi tiết có thể tra cứu trên mạng)
