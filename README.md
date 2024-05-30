@@ -56,27 +56,38 @@ Hoặc nếu bạn sử dụng Maven, thêm đoạn sau vào `pom.xml`:
 Dưới đây là một ví dụ đơn giản về cách sử dụng Neo4j Connector với Spark:
 
 ```
-import org.apache.spark.sql.SparkSession
+from pyspark.sql import SparkSession
 
-val spark = SparkSession.builder()
-  .appName("Neo4jConnectorExample")
-  .config("spark.neo4j.bolt.url", "bolt://localhost:7687")
-  .config("spark.neo4j.bolt.user", "neo4j")
-  .config("spark.neo4j.bolt.password", "password")
-  .getOrCreate()
+# Path to connector file
+connector_jar_path = "path/to/neo4j-connector-apache-spark_2.12-5.3.0_for_spark_3.jar"
 
-// Đọc dữ liệu từ Neo4j
-val df = spark.read.format("org.neo4j.spark.DataSource")
-  .option("labels", "Person")
-  .load()
+# Build Spark Session connect to your neo4j database
+spark = SparkSession.builder \
+    .appName("Neo4jConnectorTest") \
+    .config("spark.jars", connector_jar_path) \
+    .config("spark.neo4j.bolt.url", "bolt://localhost:7687") \
+    .config("spark.neo4j.bolt.user", "neo4j") \
+    .config("spark.neo4j.bolt.password", "password") \
+    .getOrCreate()
 
-df.show()
+# Read data from Neo4j and build with dataframe on pyspark
+df = spark.read.format("org.neo4j.spark.DataSource") \
+    .option("url", "bolt://localhost:7687") \
+    .option("authentication.basic.username", "neo4j") \
+    .option("authentication.basic.password", "password") \
+    .option("query", query) \
+    .load()
 
-// Ghi dữ liệu vào Neo4j
-df.write.format("org.neo4j.spark.DataSource")
-  .option("labels", "Person")
-  .mode("overwrite")
-  .save()
+# Write data
+
+df = spark.createDataFrame([("dummy",)], ["col"])  # Create a dummy DataFrame
+df.write.format("org.neo4j.spark.DataSource") \
+    .option("url", "bolt://localhost:7687") \
+    .option("authentication.basic.username", "neo4j") \
+    .option("authentication.basic.password", "password") \
+    .option("query", query) \
+    .mode("overwrite") \
+    .save()
 ```
 
 ### Sử dụng
