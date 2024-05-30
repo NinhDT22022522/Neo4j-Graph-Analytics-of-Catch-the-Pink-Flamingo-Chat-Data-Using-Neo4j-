@@ -77,7 +77,7 @@ df.write.format("org.neo4j.spark.DataSource")
 
 ### Sử dụng
 #### Chạy các truy vấn Cypher
-Sử dụng các lệnh Cypher từ file script.zip để thực hiện các truy vấn và phân tích dữ liệu.
+Sử dụng các lệnh Cypher từ file `script.zip` để thực hiện các truy vấn và phân tích dữ liệu.
 
 #### Phân tích dữ liệu
 Thực hiện các phân tích dữ liệu bằng cách sử dụng các truy vấn Cypher đã được chuẩn bị sẵn trong script.zip. Bạn có thể mở Neo4j Browser và chạy các truy vấn này để nhận được kết quả.
