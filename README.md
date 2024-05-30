@@ -32,7 +32,9 @@ Bạn có thể tìm hiểu đề bài chi tiết tại [đây](https://github.c
 
 #### Cài đặt
 
-Cài đặt file connector để có thể kết nối Neo4j và Spark: https://github.com/neo4j-contrib/neo4j-spark-connector/releases
+Cài đặt file connector để có thể kết nối Neo4j và Spark (Tải phiên bản phù hợp với Neo4j và Spark)
+https://github.com/neo4j-contrib/neo4j-spark-connector/releases
+
 
 Thêm dependency sau vào `build.sbt` nếu bạn sử dụng SBT:
 
