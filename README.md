@@ -78,8 +78,8 @@ df = spark.read.format("org.neo4j.spark.DataSource") \
     .option("query", query) \
     .load()
 
-# Write data
 
+# Write data
 df = spark.createDataFrame([("dummy",)], ["col"])  # Create a dummy DataFrame
 df.write.format("org.neo4j.spark.DataSource") \
     .option("url", "bolt://localhost:7687") \
